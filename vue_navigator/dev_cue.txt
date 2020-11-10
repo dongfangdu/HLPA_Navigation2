@@ -1,0 +1,12 @@
+st_{element_extraction,case_recommendation,text_classification,relation_extraction,semantic_understanding,audio_processing,asr_optimization,smart_dialogue,knowledge_database}
+
+
+element_extraction
+case_recommendation
+text_classification
+relation_extraction
+semantic_understanding
+audio_processing
+asr_optimization
+smart_dialogue
+knowledge_database
