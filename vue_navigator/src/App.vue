@@ -55,17 +55,33 @@
               <el-menu-item index="2-4-3">选项3</el-menu-item>
             </el-submenu>
           </el-submenu> -->
-          <!-- <el-menu-item index="1">要素提取</el-menu-item>
-          <el-menu-item index="2">类案推荐</el-menu-item>
-          <el-menu-item index="3">文本分类</el-menu-item>
-          <el-menu-item index="4">关系提取</el-menu-item>
-          <el-menu-item index="5">语义理解</el-menu-item>
-          <el-menu-item index="6">声学处理</el-menu-item>
-          <el-menu-item index="7">ASR优化</el-menu-item>
-          <el-menu-item index="8">智能对话</el-menu-item>
-          <el-menu-item index="9">知识库</el-menu-item> -->
+          <el-menu-item index="st_asr_optimization_choice"
+            >要素提取</el-menu-item
+          >
+          <el-menu-item index="st_audio_processing_choice"
+            >类案推荐</el-menu-item
+          >
+          <el-menu-item index="st_case_recommendation_choice"
+            >文本分类</el-menu-item
+          >
+          <el-menu-item index="st_element_extraction_choice"
+            >关系提取</el-menu-item
+          >
+          <el-menu-item index="st_knowledge_database_choice"
+            >语义理解</el-menu-item
+          >
+          <el-menu-item index="st_relation_extraction_choice"
+            >声学处理</el-menu-item
+          >
+          <el-menu-item index="st_semantic_understanding_choice"
+            >ASR优化</el-menu-item
+          >
+          <el-menu-item index="st_smart_dialogue_choice">智能对话</el-menu-item>
+          <el-menu-item index="st_text_classification_choice"
+            >知识库</el-menu-item
+          >
 
-          <el-submenu index="1">
+          <!-- <el-submenu index="1">
             <template slot="title">要素提取</template>
             <el-menu-item index="1-1">通用要素</el-menu-item>
             <el-menu-item index="1-2">医疗要素</el-menu-item>
@@ -114,7 +130,7 @@
             <template slot="title">知识库</template>
             <el-menu-item index="9-1">话术知识库</el-menu-item>
             <el-menu-item index="9-2">法条推荐</el-menu-item>
-          </el-submenu>
+          </el-submenu> -->
           <!-- <el-menu-item index="4"
             ><a href="https://www.ele.me" target="_blank"
               >订单管理</a
@@ -124,17 +140,66 @@
       </div>
       <div class="iframe">
         <iframe
-          v-if="menuName == '2-1'"
+          v-if="menuName == 'st_asr_optimization_choice'"
           class="ifa"
           scrolling="auto"
-          src="http://192.168.100.210:8503/"
+          :src="linkUrls.ST_ASR_OPTIMIZATION"
           frameborder="0"
         ></iframe>
         <iframe
-          v-if="menuName == '2-2'"
+          v-if="menuName == 'st_audio_processing_choice'"
           class="ifa"
           scrolling="auto"
-          src="http://www.baidu.com"
+          :src="linkUrls.ST_AUDIO_PROCESSING"
+          frameborder="0"
+        ></iframe>
+        <iframe
+          v-if="menuName == 'st_case_recommendation_choice'"
+          class="ifa"
+          scrolling="auto"
+          :src="linkUrls.ST_CASE_RECOMMENDATION"
+          frameborder="0"
+        ></iframe>
+        <iframe
+          v-if="menuName == 'st_element_extraction_choice'"
+          class="ifa"
+          scrolling="auto"
+          :src="linkUrls.ST_ELEMENT_EXTRACTION"
+          frameborder="0"
+        ></iframe>
+        <iframe
+          v-if="menuName == 'st_knowledge_database_choice'"
+          class="ifa"
+          scrolling="auto"
+          :src="linkUrls.ST_KNOWLEDGE_DATABASE"
+          frameborder="0"
+        ></iframe>
+        <iframe
+          v-if="menuName == 'st_relation_extraction_choice'"
+          class="ifa"
+          scrolling="auto"
+          :src="linkUrls.ST_RELATION_EXTRACTION"
+          frameborder="0"
+        ></iframe>
+        <iframe
+          v-if="menuName == 'st_semantic_understanding_choice'"
+          class="ifa"
+          scrolling="auto"
+          :src="linkUrls.ST_SEMANTIC_UNDERSTANDING"
+          frameborder="0"
+        ></iframe>
+        <iframe
+          v-if="menuName == 'st_smart_dialogue_choice'"
+          class="ifa"
+          scrolling="auto"
+          :src="linkUrls.ST_SMART_DIALOGUE"
+          frameborder="0"
+        ></iframe>
+        <iframe
+          v-if="menuName == 'st_text_classification_choice'"
+          class="ifa"
+          scrolling="auto"
+          :src="linkUrls.ST_TEXT_CLASSIFICAT"
           frameborder="0"
         ></iframe>
       </div>
@@ -152,6 +217,29 @@ export default {
       activeIndex: "1",
       menuName: "",
       activeName: "element_extraction",
+      //   linkUrls: {
+      //     ST_ASR_OPTIMIZATION: "http://st_asr_optimization:8502",
+      //     ST_AUDIO_PROCESSING: "http://st_audio_processing:8502",
+      //     ST_CASE_RECOMMENDATION: "http://st_case_recommendation:8502",
+      //     ST_ELEMENT_EXTRACTION: "http://st_element_extraction:8502",
+      //     ST_KNOWLEDGE_DATABASE: "http://st_knowledge_database:8502",
+      //     ST_RELATION_EXTRACTION: "http://st_relation_extraction:8502",
+      //     ST_SEMANTIC_UNDERSTANDING: "http://st_semantic_understanding:8502",
+      //     ST_SMART_DIALOGUE: "http://st_smart_dialogue:8502",
+      //     ST_TEXT_CLASSIFICATION: "http://st_text_classification:8502",
+      //   },
+      linkUrls: {
+        ST_ASR_OPTIMIZATION: "http://www.baidu.com",
+        ST_AUDIO_PROCESSING: "http://www.baidu.com",
+        ST_CASE_RECOMMENDATION: "http://st_case_recommendation:8502",
+        ST_ELEMENT_EXTRACTION: "http://www.baidu.com",
+        ST_KNOWLEDGE_DATABASE: "http://www.baidu.com",
+        ST_RELATION_EXTRACTION: "http://www.baidu.com",
+        ST_SEMANTIC_UNDERSTANDING: "http://www.baidu.com",
+        ST_SMART_DIALOGUE: "http://www.baidu.com",
+        ST_TEXT_CLASSIFICATION: "http://www.baidu.com",
+      },
+
       ifArr: {
         element_extraction: true,
         case_recommendation: false,
