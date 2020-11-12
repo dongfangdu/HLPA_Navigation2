@@ -54,3 +54,9 @@
 * ASR优化（asr_optimization）
 * 智能对话（smart_dialogue）
 * 知识库（knowledge_database）
+
+-----------
+
+## 启动说明
+
+[参考文档]
