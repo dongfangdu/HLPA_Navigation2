@@ -8,17 +8,19 @@ def description():
     st.markdown("* ASR")
     st.markdown("* TTS")
     st.markdown("* 客服大脑")
-    st.markdown("三项能力进行线上使用")
+    st.markdown("* 工单系统")
+    st.markdown("* 外呼系统")
+    st.markdown("五项能力进行线上使用\n")
+
 
     st.header("♟ 功能清单 ♟")
     st.write("我们提供了几种不同场景的智能对话服务能力\n")
-    st.write("便于体验，以下能力均以文本输入输出进行展示\n")
+    st.write("便于体验，我们仅展示对话能力，并均以文本输入输出进行展示\n")
 
     st.markdown("* 12368司法服务")
     st.markdown("* 司法外呼")
     st.markdown("* ETC销售")
     st.markdown("* 物业咨询")
-    st.markdown("* 诈骗预警")
     st.markdown("* 自学习")
 
     st.header("♟ 应用场景 ♟")

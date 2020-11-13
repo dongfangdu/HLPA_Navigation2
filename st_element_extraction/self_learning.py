@@ -83,8 +83,8 @@ def self_learning():
         st.success("训练完成")
 
     if st.button("🍄 验证文本"):
-        st.markdown("```" + default_query + "```")
         st.success("解析完成")
+        st.markdown("```" + default_query + "```")
         st.table(default_res)
 
     # ===============

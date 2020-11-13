@@ -12,6 +12,7 @@ def description():
     st.markdown("* 司法问答")
     st.markdown("* 文本纠错")
     st.markdown("* 敏感词过滤")
+    st.markdown("* 文本摘要")
 
     st.header("♟ 应用场景 ♟")
 
