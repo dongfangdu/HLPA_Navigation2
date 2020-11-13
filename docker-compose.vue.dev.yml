@@ -1,0 +1,9 @@
+version: '3'
+services:
+  vue_navigator:
+    image: nginx
+    container_name: vue_navigator
+    ports:
+      - "9498:80"
+    volumes:
+        - ./vue_navigator/dist:/usr/share/nginx/html

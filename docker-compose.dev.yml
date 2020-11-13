@@ -1,9 +1,39 @@
 version: '3'
 services:
+  
+
+  st_relation_extraction:
+    image: hawk/st_relation_extraction:latest
+    build:
+      context: ./st_relation_extraction
+    container_name: st_relation_extraction
+    # hostname: relation.extraction
+    ports:
+      - "9500:8502"
+    networks:
+      - base_api_network_0001
+    # networks:
+    #   base_api_network_0001:
+    #     aliases:
+    #       - relation.extraction
+    # volumes:
+    #   - ./st_relation_extraction/src:/app
+
   vue_navigator:
     image: nginx
     container_name: vue_navigator
     ports:
       - "9498:80"
     volumes:
-        - ./vue_navigator/dist:/usr/share/nginx/html
+      - ./vue_navigator/dist:/usr/share/nginx/html
+      - ./vue_navigator/nginx.conf:/etc/nginx/conf.d/default.conf
+    # links:
+    #   - st_relation_extraction
+    networks:
+      - base_api_network_0001
+    environment:
+      - VUE_APP_OTHER_IP=123456789
+
+networks:
+  base_api_network_0001:
+    driver: bridge
