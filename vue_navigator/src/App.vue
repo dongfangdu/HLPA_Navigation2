@@ -2,7 +2,7 @@
   <div id="app">
     <div class="allWapper">
       <!-- logo -->
-      <div class="myLogo">
+      <div class="systemLogo">
         <img src="../static/HLPAN.png" />
       </div>
       <!-- 顶部tabs -->
@@ -55,31 +55,15 @@
               <el-menu-item index="2-4-3">选项3</el-menu-item>
             </el-submenu>
           </el-submenu> -->
-          <el-menu-item index="st_element_extraction_choice"
-            >要素提取</el-menu-item
-          >
-          <el-menu-item index="st_case_recommendation_choice"
-            >类案推荐</el-menu-item
-          >
-          <el-menu-item index="st_text_classification_choice"
-            >文本分类</el-menu-item
-          >
-          <el-menu-item index="st_relation_extraction_choice"
-            >关系提取</el-menu-item
-          >
-          <el-menu-item index="st_semantic_understanding_choice"
-            >语义理解</el-menu-item
-          >
-          <el-menu-item index="st_audio_processing_choice"
-            >声学处理</el-menu-item
-          >
-          <el-menu-item index="st_asr_optimization_choice"
-            >ASR优化</el-menu-item
-          >
+          <el-menu-item index="st_element_extraction_choice">要素提取</el-menu-item>
+          <el-menu-item index="st_case_recommendation_choice">类案推荐</el-menu-item>
+          <el-menu-item index="st_text_classification_choice">文本分类</el-menu-item>
+          <el-menu-item index="st_relation_extraction_choice">关系提取</el-menu-item>
+          <el-menu-item index="st_semantic_understanding_choice">语义理解</el-menu-item>
+          <el-menu-item index="st_audio_processing_choice">声学处理</el-menu-item>
+          <el-menu-item index="st_asr_optimization_choice">ASR优化</el-menu-item>
           <el-menu-item index="st_smart_dialogue_choice">智能对话</el-menu-item>
-          <el-menu-item index="st_knowledge_database_choice"
-            >知识库</el-menu-item
-          >
+          <el-menu-item index="st_knowledge_database_choice">知识库</el-menu-item>
 
           <!-- <el-submenu index="1">
             <template slot="title">要素提取</template>
@@ -199,7 +183,7 @@
           v-if="menuName == 'st_text_classification_choice'"
           class="ifa"
           scrolling="auto"
-          :src="linkUrls.ST_TEXT_CLASSIFICAT"
+          :src="linkUrls.ST_TEXT_CLASSIFICATION"
           frameborder="0"
         ></iframe>
       </div>
@@ -210,6 +194,8 @@
 </template>
 
 <script>
+import Config from "./config";
+
 export default {
   name: "App",
   data() {
@@ -228,17 +214,25 @@ export default {
       //     ST_SMART_DIALOGUE: "http://st_smart_dialogue:8502",
       //     ST_TEXT_CLASSIFICATION: "http://st_text_classification:8502",
       //   },
+      //   deployHost: Config.VUE_APP_DEPLOY_HOST,
+      //   deployPort: Config.VUE_APP_DEPLOY_PORT,
+      deployUrl: Config.VUE_APP_DEPLOY_URL,
       linkUrls: {
-        ST_ASR_OPTIMIZATION: "http://www.baidu.com",
-        ST_AUDIO_PROCESSING: "http://www.baidu.com",
-        ST_CASE_RECOMMENDATION: "http://st_case_recommendation:80",
-        ST_ELEMENT_EXTRACTION: "http://www.baidu.com",
-        ST_KNOWLEDGE_DATABASE: "http://www.baidu.com",
+        ST_ASR_OPTIMIZATION: Config.VUE_APP_DEPLOY_URL + "/asr-optimization/",
+        ST_AUDIO_PROCESSING: Config.VUE_APP_DEPLOY_URL + "/audio-processing/",
+        ST_CASE_RECOMMENDATION:
+          Config.VUE_APP_DEPLOY_URL + "/case-recommendation/",
+        ST_ELEMENT_EXTRACTION:
+          Config.VUE_APP_DEPLOY_URL + "/element-extraction/",
+        ST_KNOWLEDGE_DATABASE:
+          Config.VUE_APP_DEPLOY_URL + "/knowledge-database/",
         ST_RELATION_EXTRACTION:
-          "http://192.168.108.197:9498/relation-extraction/",
-        ST_SEMANTIC_UNDERSTANDING: "http://www.baidu.com",
-        ST_SMART_DIALOGUE: "http://www.baidu.com",
-        ST_TEXT_CLASSIFICATION: "http://www.baidu.com",
+          Config.VUE_APP_DEPLOY_URL + "/relation-extraction/",
+        ST_SEMANTIC_UNDERSTANDING:
+          Config.VUE_APP_DEPLOY_URL + "/semantic-understanding/",
+        ST_SMART_DIALOGUE: Config.VUE_APP_DEPLOY_URL + "/smart-dialogue/",
+        ST_TEXT_CLASSIFICATION:
+          Config.VUE_APP_DEPLOY_URL + "/text-classification/",
       },
 
       ifArr: {
@@ -262,7 +256,9 @@ export default {
     handleSelect(key, keyPath) {
       this.menuName = key;
       console.log("process.env.VUE_APP_OTHER_IP");
-      console.log(process.env.VUE_APP_OTHER_IP);
+      //   console.log(this.deployHost);
+      //   console.log(this.deployPort);
+      console.log(this.deployUrl);
     },
   },
 };
@@ -305,12 +301,12 @@ body {
   width: 100%;
   height: 100%;
 }
-.myLogo {
+.systemLogo {
   width: 200px;
   height: 53px;
   margin-right: 35px;
 }
-.myLogo img {
+.systemLogo img {
   width: 100%;
 }
 .menu {

@@ -2,8 +2,18 @@ version: '3'
 services:
   
 
+  st_case_recommendation:
+    image: yunjia/st_case_recommendation:latest
+    build:
+      context: ./st_case_recommendation
+    container_name: st_case_recommendation
+    ports:
+      - "9502:8502"
+    networks:
+      - base_api_network_0001
+
   st_relation_extraction:
-    image: hawk/st_relation_extraction:latest
+    image: yunjia/st_relation_extraction:latest
     build:
       context: ./st_relation_extraction
     container_name: st_relation_extraction

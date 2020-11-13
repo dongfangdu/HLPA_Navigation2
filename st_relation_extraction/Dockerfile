@@ -1,5 +1,5 @@
 FROM python:3.6.12-slim-stretch
-MAINTAINER Jocky Hawk <howhaw@163.com>
+MAINTAINER Jocky Hawk <hezw@yunjiacloud.com>
 
 
 ENV APP_DIR /app
@@ -34,5 +34,4 @@ EXPOSE 8502
 ADD dirs.tar .
 
 # exectute start up script
-# CMD ["streamlit", "run", "src/app.py", "--server.host", "0.0.0.0", "--server.port", "80", "--server.enableCORS", "false"]
 CMD ["streamlit", "run", "src/app.py", "--server.port", "8502", "--server.baseUrlPath", "/relation-extraction", "--server.enableCORS", "false"]
