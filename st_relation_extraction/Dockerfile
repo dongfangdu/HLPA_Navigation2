@@ -1,5 +1,5 @@
 FROM python:3.6.12-slim-stretch
-MAINTAINER Jocky Hawk <hezw@yunjiacloud.com>
+LABEL maintainer="Jocky Hawk <hezw@yunjiacloud.com>"
 
 
 ENV APP_DIR /app

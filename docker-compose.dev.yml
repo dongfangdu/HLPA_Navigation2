@@ -1,14 +1,23 @@
 version: '3'
 services:
-  
+
+  st_asr_optimization:
+    image: yunjia/st_asr_optimization:latest
+    build:
+      context: ./st_asr_optimization
+    container_name: st_asr_optimization
+    # ports:
+    #   - "9502:8502"
+    networks:
+      - base_api_network_0001  
 
   st_case_recommendation:
     image: yunjia/st_case_recommendation:latest
     build:
       context: ./st_case_recommendation
     container_name: st_case_recommendation
-    ports:
-      - "9502:8502"
+    # ports:
+    #   - "9502:8502"
     networks:
       - base_api_network_0001
 
@@ -18,8 +27,8 @@ services:
       context: ./st_relation_extraction
     container_name: st_relation_extraction
     # hostname: relation.extraction
-    ports:
-      - "9500:8502"
+    # ports:
+    #   - "9500:8502"
     networks:
       - base_api_network_0001
     # networks:
