@@ -1,6 +1,7 @@
-import streamlit as st
 import pandas as pd
+import streamlit as st
 from PIL import Image
+
 
 def self_learning():
     st.title("自学习")
@@ -37,13 +38,13 @@ def self_learning():
 
     st.subheader("🍄 主要流程")
     st.markdown("```用户上传训练数据，并启动自学习服务，能力将输出模型并可进行验证和使用```")
-    image_1 = Image.open('./img/self_learning_main.png')
-    st.image(image_1, caption = "自学习主要流程")
+    image_1 = Image.open("./img/self_learning_main.png")
+    st.image(image_1, caption="自学习主要流程")
 
     st.subheader("🍄 自学习架构")
     st.markdown("```自学习框架各子能力均可进行自由配置，但我们简易使用默认配置```")
     image_2 = Image.open("./img/self_learning.png")
-    st.image(image_2, caption = "自学习架构")
+    st.image(image_2, caption="自学习架构")
 
     # ===============
     # 数据提供
@@ -59,21 +60,22 @@ def self_learning():
     st.header("♟ 样例体验 ♟")
 
     default_samples = pd.DataFrame(
-        [["fruit", "苹果", "我今天买了1斤苹果"],
-         ["fruit", "苹果", "苹果上市的时间到了"],
-         ["fruit", "香蕉", "这香蕉多少钱"],
-         ["fruit", "香蕉", "香蕉味的酸奶"],
-         ["fruit", "橘子", "电影中橘子象征死亡"],
-         ["fruit", "橘子", "橘子颜色的猫"]],
-        columns = ["要素类别", "典型词", "典型句"]
+        [
+            ["fruit", "苹果", "我今天买了1斤苹果"],
+            ["fruit", "苹果", "苹果上市的时间到了"],
+            ["fruit", "香蕉", "这香蕉多少钱"],
+            ["fruit", "香蕉", "香蕉味的酸奶"],
+            ["fruit", "橘子", "电影中橘子象征死亡"],
+            ["fruit", "橘子", "橘子颜色的猫"],
+        ],
+        columns=["要素类别", "典型词", "典型句"],
     )
 
     default_query = "火龙果真好吃"
 
-    default_res = pd.DataFrame({"要素": ["火龙果"],
-                                "标签": ["fruit"],
-                                "开始位置": [0],
-                                "结束位置": [3]})
+    default_res = pd.DataFrame(
+        {"要素": ["火龙果"], "标签": ["fruit"], "开始位置": [0], "结束位置": [3]}
+    )
 
     if st.checkbox("🍄 上传文本"):
         st.table(default_samples)
@@ -93,6 +95,7 @@ def self_learning():
     st.header("♟ API 接口文档 ♟")
     if st.checkbox("接口文档"):
         st.write("未完成\n")
+
 
 if __name__ == "__main__":
     self_learning()

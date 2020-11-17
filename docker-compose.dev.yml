@@ -71,6 +71,16 @@ services:
     networks:
       - base_api_network_0001
 
+  st_audio_processing:
+    image: yunjia/st_audio_processing:latest
+    build:
+      context: ./st_audio_processing
+    container_name: st_audio_processing
+    # ports:
+    #   - "9506:8502"
+    networks:
+      - base_api_network_0001
+
   st_relation_extraction:
     image: yunjia/st_relation_extraction:latest
     build:
