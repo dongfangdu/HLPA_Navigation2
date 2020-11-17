@@ -1,7 +1,6 @@
 导航页（iframe-navigation）
 --------------------------
 
-
 ## 构建配置（Build Setup）
 
 ``` bash
@@ -28,3 +27,12 @@ npm test
 ```
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+
+## Docker部署
+
+[参考](https://blog.csdn.net/jiangyu1013/article/details/84572582)
+
+
+```
+docker build -f Dockerfile.vuedev -t hawk/vue-dev:v1 .
+```

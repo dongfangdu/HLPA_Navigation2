@@ -1,0 +1,108 @@
+version: '3'
+services:
+
+  st_asr_optimization:
+    image: yunjia/st_asr_optimization:latest
+    build:
+      context: ./st_asr_optimization
+    container_name: st_asr_optimization
+    # ports:
+    #   - "9502:8502"
+    networks:
+      - base_api_network_0001  
+
+  st_case_recommendation:
+    image: yunjia/st_case_recommendation:latest
+    build:
+      context: ./st_case_recommendation
+    container_name: st_case_recommendation
+    # ports:
+    #   - "9504:8502"
+    networks:
+      - base_api_network_0001
+
+  st_text_classification:
+    image: yunjia/st_text_classification:latest
+    build:
+      context: ./st_text_classification
+    container_name: st_text_classification
+    # ports:
+    #   - "9506:8502"
+    networks:
+      - base_api_network_0001
+
+  st_element_extraction:
+    image: yunjia/st_element_extraction:latest
+    build:
+      context: ./st_element_extraction
+    container_name: st_element_extraction
+    # ports:
+    #   - "9506:8502"
+    networks:
+      - base_api_network_0001
+
+  st_knowledge_database:
+    image: yunjia/st_knowledge_database:latest
+    build:
+      context: ./st_knowledge_database
+    container_name: st_knowledge_database
+    # ports:
+    #   - "9506:8502"
+    networks:
+      - base_api_network_0001
+  
+  st_semantic_understanding:
+    image: yunjia/st_semantic_understanding:latest
+    build:
+      context: ./st_semantic_understanding
+    container_name: st_semantic_understanding
+    # ports:
+    #   - "9506:8502"
+    networks:
+      - base_api_network_0001
+
+  st_smart_dialogue:
+    image: yunjia/st_smart_dialogue:latest
+    build:
+      context: ./st_smart_dialogue
+    container_name: st_smart_dialogue
+    # ports:
+    #   - "9506:8502"
+    networks:
+      - base_api_network_0001
+
+  st_relation_extraction:
+    image: yunjia/st_relation_extraction:latest
+    build:
+      context: ./st_relation_extraction
+    container_name: st_relation_extraction
+    # hostname: relation.extraction
+    # ports:
+    #   - "9508:8502"
+    networks:
+      - base_api_network_0001
+    # networks:
+    #   base_api_network_0001:
+    #     aliases:
+    #       - relation.extraction
+    volumes:
+      - ./st_relation_extraction/src:/app/src
+
+  vue_navigator:
+    image: nginx
+    container_name: vue_navigator
+    ports:
+      - "9498:80"
+    volumes:
+      - ./vue_navigator/dist:/usr/share/nginx/html
+      - ./vue_navigator/nginx.conf:/etc/nginx/conf.d/default.conf
+    # links:
+    #   - st_relation_extraction
+    networks:
+      - base_api_network_0001
+    environment:
+      - VUE_APP_OTHER_IP=123456789
+
+networks:
+  base_api_network_0001:
+    driver: bridge
