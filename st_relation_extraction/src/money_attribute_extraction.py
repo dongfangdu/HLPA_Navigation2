@@ -23,7 +23,12 @@ def prepare_layout() -> None:
     """[summary]"""
 
     st.title("📕 金额属性抽取")
-    st.write("本页可以通过调用分析接口，具体体会该功能的作用。")
+
+    # ===============
+    # 概述
+    # ===============
+    st.header("♟ 概述 ♟")
+    st.write("金额属性可以通过调用分析接口，具体体会该功能的作用。")
 
     # annotated_text(
     #     "This ",
@@ -39,7 +44,17 @@ def prepare_layout() -> None:
     #     ("thing", "", "#afa"),
     # )
 
-    text = "合同上写明了借款是1万7千元。"
+    # ===============
+    # 示例
+    # ===============
+    st.header("♟ 示例 ♟")
+
+    st.markdown("🍄 **示例文本: **")
+
+    default_text = "合同上写明了借款是1万7千元。"
+    st.markdown("```" + default_text + "```")
+
+    st.markdown("🍄 **分析结果: **")
     annotated_text(
         "合同上写明了",
         ("借款", "", "#8ef"),
@@ -48,32 +63,22 @@ def prepare_layout() -> None:
         "。",
     )
 
-    # st.markdown("There are several things you see on this page:".format(SPACES))
-    # st.markdown(
-    #     "{}🔹 On the **left** you can see how often the selected game was played "
-    #     "in the last year. ".format(SPACES)
-    # )
-    # st.markdown(
-    #     "{}🔹 You can see the **distribution** of scores for the selected game. ".format(
-    #         SPACES
-    #     )
-    # )
-    # st.markdown("{}🔹 The **frequency** of matches for each player. ".format(SPACES))
-    # st.markdown(
-    #     "{}🔹 The **top** and **bottom** players for the selected game.".format(SPACES)
-    # )
+    # ===============
+    # 接口调用
+    # ===============
+    st.header("♟ 接口调用 ♟")
 
-    # # Prepare ordered selection of games
-    # games = list(df.Game.unique())
-    # games.sort()
+    st.markdown("🍄 **输入文本: **")
 
-    # # Select game and possibly a version of it
-    # selected_game = st.selectbox("Select a game to explore.", games)
-    # selected_game_df = df.loc[(df.Game == selected_game), :]
-    # versions = list(selected_game_df.Version.unique())
-    # versions.sort()
-    # if len(versions) > 1:
-    #     version = st.selectbox("Select a game to explore.", versions)
-    #     selected_game_df = selected_game_df.loc[selected_game_df.Version == version, :]
+    text = st.text_area("待分析文本", default_text, key=f"money_attr_text")
 
-    # return selected_game_df, selected_game
+    if st.button("分析"):
+        pass
+        print(text)
+
+    else:
+        st.write("请点击推荐")
+
+
+def reform_attr_res():
+    pass

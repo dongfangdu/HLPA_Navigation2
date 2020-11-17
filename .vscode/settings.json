@@ -17,8 +17,10 @@
         "editor.selectionHighlightBackground": "#ff0000"
     },
     "python.analysis.extraPaths": [
+        "/home/user/hezw/work_py/hlpa_navigation/st_asr_optimization/src",
         "/home/user/hezw/work_py/hlpa_navigation/st_case_recommendation/src",
         "/home/user/hezw/work_py/hlpa_navigation/st_relation_extraction/src",
+        "/home/user/hezw/work_py/hlpa_navigation/st_text_classification/src",
     ],
     "python.analysis.autoSearchPaths": true,
     // markdown-formatter conf
