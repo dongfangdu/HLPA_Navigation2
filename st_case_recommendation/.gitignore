@@ -11,6 +11,7 @@ __pycache__/
 .idea/
 
 # data file
+*.tar
 
 # Distribution / packaging
 .Python
