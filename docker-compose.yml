@@ -1,0 +1,71 @@
+version: '3'
+services:
+
+  st_asr_optimization:
+    image: yunjia/st_asr_optimization:latest
+    container_name: st_asr_optimization
+    networks:
+      - hlap_network  
+
+  st_case_recommendation:
+    image: yunjia/st_case_recommendation:latest
+    container_name: st_case_recommendation
+    networks:
+      - hlap_network
+
+  st_text_classification:
+    image: yunjia/st_text_classification:latest
+    container_name: st_text_classification
+    networks:
+      - hlap_network
+
+  st_element_extraction:
+    image: yunjia/st_element_extraction:latest
+    container_name: st_element_extraction
+    networks:
+      - hlap_network
+
+  st_knowledge_database:
+    image: yunjia/st_knowledge_database:latest
+    container_name: st_knowledge_database
+    networks:
+      - hlap_network
+  
+  st_semantic_understanding:
+    image: yunjia/st_semantic_understanding:latest
+    container_name: st_semantic_understanding
+    networks:
+      - hlap_network
+
+  st_smart_dialogue:
+    image: yunjia/st_smart_dialogue:latest
+    container_name: st_smart_dialogue
+    networks:
+      - hlap_network
+
+  st_audio_processing:
+    image: yunjia/st_audio_processing:latest
+    container_name: st_audio_processing
+    networks:
+      - hlap_network
+
+  st_relation_extraction:
+    image: yunjia/st_relation_extraction:latest
+    container_name: st_relation_extraction
+    networks:
+      - hlap_network
+
+  vue_navigator:
+    image: nginx
+    container_name: vue_navigator
+    ports:
+      - "9600:80"
+    volumes:
+      - ./vue_navigator/dist:/usr/share/nginx/html
+      - ./vue_navigator/nginx.conf:/etc/nginx/conf.d/default.conf
+    networks:
+      - hlap_network
+
+networks:
+  hlap_network:
+    driver: bridge
