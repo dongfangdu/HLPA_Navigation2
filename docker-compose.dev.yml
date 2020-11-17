@@ -17,7 +17,17 @@ services:
       context: ./st_case_recommendation
     container_name: st_case_recommendation
     # ports:
-    #   - "9502:8502"
+    #   - "9504:8502"
+    networks:
+      - base_api_network_0001
+
+  st_text_classification:
+    image: yunjia/st_text_classification:latest
+    build:
+      context: ./st_text_classification
+    container_name: st_text_classification
+    ports:
+      - "9506:8502"
     networks:
       - base_api_network_0001
 
