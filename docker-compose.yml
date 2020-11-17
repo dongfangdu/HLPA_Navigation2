@@ -55,14 +55,12 @@ services:
     networks:
       - hlap_network
 
+
   vue_navigator:
-    image: nginx
+    image: yunjia/vue_navigator:latest
     container_name: vue_navigator
     ports:
       - "9600:80"
-    volumes:
-      - ./vue_navigator/dist:/usr/share/nginx/html
-      - ./vue_navigator/nginx.conf:/etc/nginx/conf.d/default.conf
     networks:
       - hlap_network
 
