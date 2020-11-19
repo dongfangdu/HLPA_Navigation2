@@ -1,16 +1,18 @@
 # -*- coding: utf-8 -*-
-import streamlit as st
-from libs.common import get_config_dict
-import pandas as pd
 import http.client
 import json
 
+import pandas as pd
+import streamlit as st
+
+from libs.common import get_config_dict
+
 
 def homepage():
-    st.image(
-        "https://raw.githubusercontent.com/MaartenGr/boardgame/master/images/logo_small.jpg",
-        use_column_width=True,
-    )
+    # st.image(
+    #     "https://raw.githubusercontent.com/MaartenGr/boardgame/master/images/logo_small.jpg",
+    #     use_column_width=True,
+    # )
     st.title("类案推送功能服务")
     st.markdown(
         "在人工智能和法律结合的场景中，智能判决辅助作为智能司法引擎的重要组成部分，在人工智能背景下如何“准确定义类案”并“精准发现类案”是关键所在，对推动司法领域智慧化的建设有着极其重要的作用。另外，司法体制改革后，法官有了更大的自主判断权和自由裁量权，同时会产生裁判尺度不统一、类案不同判、量刑不规范等问题。而智能判决辅助技术通过发现案情相类似的裁判文书作为法官判案参考，以实现司法过程中类案类判的目标，维护司法公信力。因此，智能判决辅助的研究具有很高的意义和价值，极具应用前景。"

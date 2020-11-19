@@ -201,7 +201,7 @@ export default {
   data() {
     return {
       activeIndex: "st_element_extraction_choice",
-      menuName: "st_asr_optimization_choice",
+      menuName: "st_element_extraction_choice",
       activeName: "element_extraction",
       //   linkUrls: {
       //     ST_ASR_OPTIMIZATION: "http://st_asr_optimization:8502",
@@ -249,16 +249,16 @@ export default {
     };
   },
   methods: {
-    handleClick(tab, event) {
-      let flagName = tab.name;
-      this.ifArr[flagName] = true;
-    },
+    // handleClick(tab, event) {
+    //   let flagName = tab.name;
+    //   this.ifArr[flagName] = true;
+    // },
     handleSelect(key, keyPath) {
       this.menuName = key;
-      console.log("process.env.VUE_APP_OTHER_IP");
-      //   console.log(this.deployHost);
-      //   console.log(this.deployPort);
-      console.log(this.deployUrl);
+      //   console.log("process.env.VUE_APP_OTHER_IP");
+      //   //   console.log(this.deployHost);
+      //   //   console.log(this.deployPort);
+      //   console.log(this.deployUrl);
     },
   },
 };
