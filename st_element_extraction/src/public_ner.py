@@ -1,5 +1,9 @@
 import streamlit as st
 import pandas as pd
+import requests
+import json
+
+URL = "http://192.168.100.210:9999/parse"
 
 def public_ner():
     st.title("公共要素提取")
@@ -31,18 +35,31 @@ def public_ner():
     st.header("♟ 样例体验 ♟")
 
     default_sample = "罪嫌疑人为郭磊昌，19岁，男，广西壮族腾王村十队人，汉族，满族少数民族。"
-    default_res = pd.DataFrame({"要素": ["郭磊昌", "19岁", "男", "广西壮族腾王村", "汉族", "满族"],
-                                "标签": ["PER", "Age", "Gender", "RESIDENT", "Race", "Race"],
-                                "开始位置": [5, 9, 13, 15, 26, 29],
-                                "结束位置": [8, 12, 14, 22, 28, 31]})
+    #default_res = pd.DataFrame({"要素": ["郭磊昌", "19岁", "男", "广西壮族腾王村", "汉族", "满族"],
+    #                            "标签": ["PER", "Age", "Gender", "RESIDENT", "Race", "Race"],
+    #                            "开始位置": [5, 9, 13, 15, 26, 29],
+    #                            "结束位置": [8, 12, 14, 22, 28, 31]})
 
     # name = st.text_input("输入文本") or default_sample
     st.markdown("🍄 **输入文本: **")
 
-    st.write("```" + default_sample + "```")
+    #st.write("```" + default_sample + "```")
+    text = st.text_area("请输入文本", default_sample, key="public_ner_sample_parser")
+    
     if st.button("解析"):
-        st.success("解析完成")
-        st.table(default_res)
+        try:
+            parser_res = requests.post(url = URL, data = json.dumps({"q": text})).json()
+            st.success("解析完成")
+
+            entities = parser_res.get("entities")
+
+            st.table(pd.DataFrame({"要素": [x["value"] for x in entities],
+                "标签": [x["entity"] for x in entities],
+                "开始位置": [x["start"] for x in entities],
+                "结束位置": [x["end"] for x in entities]}))
+        except:
+            st.error("解析失败，请稍后重试")
+            
 
     # ===============
     # API 接口文档
