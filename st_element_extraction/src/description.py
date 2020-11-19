@@ -1,5 +1,6 @@
 import streamlit as st
 
+
 def description():
     st.title("要素提取")
     st.header("♟ 概述 ♟")
@@ -10,7 +11,7 @@ def description():
 
     st.markdown("* 公共要素提取")
     st.markdown("* 医疗要素提取")
-    st.markdown("* 文书要素提取")
+    st.markdown("* 司法要素提取")
     st.markdown("* 热词发现")
     st.markdown("* 自学习")
 

@@ -3,10 +3,10 @@ import streamlit as st
 
 
 def homepage():
-    st.image(
-        "https://raw.githubusercontent.com/MaartenGr/boardgame/master/images/logo_small.jpg",
-        use_column_width=True,
-    )
+    # st.image(
+    #     "https://raw.githubusercontent.com/MaartenGr/boardgame/master/images/logo_small.jpg",
+    #     use_column_width=True,
+    # )
     st.title("引擎识别效果优化服务")
     st.markdown(
         "语音识别算法目前虽已日趋完善，但语音识别系统的性能受多方面影响，如口语化，方言，短词，语速，音量，噪声等。在不同的应用场景中，往往遇到各种各样的问题影响引擎的最终识别结果。如何因地制宜，差异性地解决这些问题造成的不良影响，提升引擎的识别准确率，是优化声学模型的一项重要准则。引擎识别效果优化主要从声学模型优化和语音模型优化两个方面进行。"
