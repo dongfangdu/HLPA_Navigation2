@@ -17,10 +17,10 @@ from util.utils import get_doc_dir
 
 def creat_layout() -> None:
     st.sidebar.title("菜单")
-    select_mode = st.sidebar.selectbox(
+    select_mode = st.sidebar.radio(
         "请选择其中一个功能",
         (
-            "首页",
+            "简介",
             "语音增强",
             "语音合成",
             "声音转换",
@@ -28,7 +28,7 @@ def creat_layout() -> None:
             "使用文档",
         ),
     )
-    if select_mode == "首页":
+    if select_mode == "简介":
         home_page()
     elif select_mode == "语音增强":
         speech_enh()

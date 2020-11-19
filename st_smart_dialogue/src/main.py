@@ -9,7 +9,7 @@ def run():
                 4: "物业咨询",
                 5: "自学习"}
 
-    app_mode = st.sidebar.selectbox("智能对话",
+    app_mode = st.sidebar.radio("请选择其中一个功能",
                                     ["简介", "12368司法服务", "司法外呼", "ETC销售", "物业咨询", "自学习"])
 
     if app_mode == mode_map.get(0):

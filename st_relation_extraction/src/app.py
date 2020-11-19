@@ -153,10 +153,10 @@ def create_layout(
 
     # is_loaded_header.subheader("✔️Data is loaded")
     st.sidebar.title("菜单")
-    app_mode = st.sidebar.selectbox(
+    app_mode = st.sidebar.radio(
         "请选择其中一个功能",
         [
-            "首页",
+            "简介",
             "金额属性抽取",
             "使用文档",
             "接口文档",
@@ -166,7 +166,7 @@ def create_layout(
             # "Head to Head",
         ],
     )
-    if app_mode == "首页":
+    if app_mode == "简介":
         load_homepage()
         # preprocessing_tips()
     elif app_mode == "使用文档":
