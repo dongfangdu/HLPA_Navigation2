@@ -200,8 +200,8 @@ export default {
   name: "App",
   data() {
     return {
-      activeIndex: "1",
-      menuName: "",
+      activeIndex: "st_element_extraction_choice",
+      menuName: "st_asr_optimization_choice",
       activeName: "element_extraction",
       //   linkUrls: {
       //     ST_ASR_OPTIMIZATION: "http://st_asr_optimization:8502",

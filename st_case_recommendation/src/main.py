@@ -54,7 +54,7 @@ def list_2_DataFrame(input_data):
 
 def create_layout():
     st.sidebar.title("菜单")
-    app_mode = st.sidebar.selectbox("请选择其中一个功能", ["简介", "推荐", "接口文档"])
+    app_mode = st.sidebar.radio("请选择其中一个功能", ["简介", "推荐", "接口文档"])
     if app_mode == "简介":
         homepage()
     elif app_mode == "推荐":

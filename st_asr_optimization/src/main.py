@@ -39,7 +39,7 @@ def voice_model():
 
 def create_layout():
     st.sidebar.title("菜单")
-    app_mode = st.sidebar.selectbox("请选择其中一个功能", ["简介", "声学模型优化", "语言模型优化"])
+    app_mode = st.sidebar.radio("请选择其中一个功能", ["简介", "声学模型优化", "语言模型优化"])
     if app_mode == "简介":
         homepage()
     elif app_mode == "声学模型优化":

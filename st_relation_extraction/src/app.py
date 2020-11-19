@@ -153,7 +153,7 @@ def create_layout(
 
     # is_loaded_header.subheader("✔️Data is loaded")
     st.sidebar.title("菜单")
-    app_mode = st.sidebar.selectbox(
+    app_mode = st.sidebar.radio(
         "请选择其中一个功能",
         [
             "简介",

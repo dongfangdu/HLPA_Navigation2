@@ -17,7 +17,7 @@ from util.utils import get_doc_dir
 
 def creat_layout() -> None:
     st.sidebar.title("菜单")
-    select_mode = st.sidebar.selectbox(
+    select_mode = st.sidebar.radio(
         "请选择其中一个功能",
         (
             "简介",
