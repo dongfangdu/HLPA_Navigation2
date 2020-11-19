@@ -34,4 +34,4 @@ EXPOSE 8502
 ADD dirs.tar .
 
 # exectute start up script
-CMD ["streamlit", "run", "src/app.py", "--server.port", "8502", "--server.baseUrlPath", "/relation-extraction", "--server.enableCORS", "false"]
+CMD ["streamlit", "run", "src/main.py", "--server.port", "8502", "--server.baseUrlPath", "/relation-extraction", "--server.enableCORS", "false"]
