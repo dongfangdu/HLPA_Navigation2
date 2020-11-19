@@ -1,16 +1,16 @@
 # -*- coding: utf-8 -*-
-import streamlit as st
 import pandas as pd
+import streamlit as st
 
 
 def parag_classify():
-    st.title("文本段落分类")
+    st.title("裁判文书段落分类")
 
     # ===============
     # 概述
     # ===============
     st.header("♟ 概述 ♟")
-    st.write("文本段落分类是指根据判决书文本的结构以及所表达的含义和情感信息将判决书的段落进行分类\n")
+    st.write("裁判文书段落分类是指根据判决书文本的结构以及所表达的含义和情感信息将判决书的段落进行分类\n")
 
     # ===============
     # 示例
@@ -27,8 +27,32 @@ def parag_classify():
     default_sample8 = "原告诉称：2009年3月30日被告戴永强向原告借款40万元，并打下借条一支，双方约定借款月利率3.5%，被告杜胜利为连带担保责任人在借款协议中签字。但从2011年3月30日后，被告再未给付借款本金及利息，经原告多次催要未果，故诉至法院要求被告戴永强偿还原告借款本金40万元及利息22万元（从2011年3月30日到2013年1月30日），共计62万元，月利率按2.5%计算；判令被告戴永强给付从起诉之日起到结案给付之日止的利息，月利率按2.5%计算；被告杜胜利对上述借款本金及利息承担连带还款责任，诉讼费用及相关费用由二被告承担。"
     default_sample9 = "被告戴永强辩称：不同意原告的诉讼请求，40万元的利息从一开始借款就应该按银行贷款利率计算，现在40万元我们给原告抵顶一个价值2万元的茶台，本金现在剩余38万元。"
 
-    default_res = pd.DataFrame({"文本段落": [default_sample1, default_sample2, default_sample3, default_sample4, default_sample5, default_sample6, default_sample7, default_sample8, default_sample9],
-                                "类别": ["标题", "文书编号", "当事人信息", "审理过程", "原告主张", "被告答辩", "举证质证", "审理事实", "判决理由"]})
+    default_res = pd.DataFrame(
+        {
+            "文本段落": [
+                default_sample1,
+                default_sample2,
+                default_sample3,
+                default_sample4,
+                default_sample5,
+                default_sample6,
+                default_sample7,
+                default_sample8,
+                default_sample9,
+            ],
+            "类别": [
+                "标题",
+                "文书编号",
+                "当事人信息",
+                "审理过程",
+                "原告主张",
+                "被告答辩",
+                "举证质证",
+                "审理事实",
+                "判决理由",
+            ],
+        }
+    )
 
     st.markdown("🍄 **输入文本: **")
 
