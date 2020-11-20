@@ -1,6 +1,9 @@
 import streamlit as st
 import pandas as pd
+import requests
+import json
 
+URL = "http://192.168.106.170:9997/v1/api/"
 
 def defraud():
     st.title("敏感词过滤")
@@ -9,35 +12,41 @@ def defraud():
     # 概述
     # ===============
     st.header("♟ 概述 ♟")
-    st.write("敏感词过滤是一项检测给定文本中是否存在目标敏感词的能力")
+    st.markdown("敏感词过滤是一项检测给定文本中是否 `存在敏感词` 的能力")
 
     # ===============
     # 样例体验
     # ===============
     st.header("♟ 样例体验 ♟")
-    st.write("该样例展示了枪支暴动相关的敏感词过滤")
+    st.warning("体验环境为测试环境，建议文本长度在100字以内")
 
-    default_text = "在线出售雷管炸药各种炸药配方大全"
+    default_sample = "在线出售雷管炸药各种炸药配方大全"
 
-    default_answer = pd.DataFrame({
-        "敏感词": ["出售雷管", "炸药", "各种炸药配方大全"],
-        "开始位置": [2, 6, 8],
-        "结束位置": [6, 8, 16]
-    })
+    # if st.checkbox("🍄 点击查看文本"):
+    #     st.markdown("```" + default_text + "```")
+    text = st.text_area("🍄 请输入体验文本:", value = default_sample, key="defraud_sample")
 
-    if st.checkbox("🍄 点击查看文本"):
-        st.markdown("```" + default_text + "```")
+    if st.button("点击解析"):
+        try:
+            requests.get(url = URL + "ping")
+        except:
+            st.error("服务未开启，请联系ASR基础研发部")
 
-    if st.button("解析"):
-        st.success("解析完成")
-        st.table(default_answer)
+        try:
+            parser_res = requests.post(url = URL + "defraudParse", data = json.dumps({"sentence": text})).json()
+            st.success("解析完成")
+
+            st.table(pd.DataFrame.from_dict(parser_res.get("defraud")))
+
+        except:
+            st.error("解析失败，请稍后重试")
 
 
     # ===============
     # API 接口文档
     # ===============
     st.header("♟ API 接口文档 ♟")
-    if st.checkbox("接口文档"):
+    if st.checkbox("点击查看 接口文档"):
         st.write("服务通过 HTTP/POST 进行服务解析请求\n")
 
         option = st.selectbox("入参/出参", ("入参 JSON", "出参 JSON"))
@@ -77,7 +86,7 @@ def defraud():
     # 自定义热词词典
     # ===============
     st.header("♟ 热词词典 ♟")
-    if st.checkbox("热词词典"):
+    if st.checkbox("点击查看 热词词典"):
         st.write("该能力支持动态增删敏感词供模型使用")
 
         st.markdown("```\n"

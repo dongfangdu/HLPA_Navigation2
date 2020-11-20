@@ -3,7 +3,7 @@ import pandas as pd
 import requests
 import json
 
-URL = "http://192.168.100.210:9999/parse"
+URL = "http://192.168.100.210:9999"
 
 def public_ner():
     st.title("公共要素提取")
@@ -12,8 +12,8 @@ def public_ner():
     # 概述
     # ===============
     st.header("♟ 概述 ♟")
-    st.write("公共要素提取，是适用于各场景下的要素提取能力\n")
-    st.write("我们内置了 18 类较为通用的要素供以提取使用\n")
+    st.markdown("公共要素提取，是适用于各场景下的要素提取能力")
+    st.markdown("我们内置了`18 类`较为通用的要素供以提取使用")
 
     # ===============
     # 字段
@@ -32,40 +32,40 @@ def public_ner():
     # ===============
     # 样例体验
     # ===============
+
     st.header("♟ 样例体验 ♟")
+    st.warning("体验环境为测试环境，建议文本长度在100字以内，解析可能存在延迟")
 
-    default_sample = "罪嫌疑人为郭磊昌，19岁，男，广西壮族腾王村十队人，汉族，满族少数民族。"
-    #default_res = pd.DataFrame({"要素": ["郭磊昌", "19岁", "男", "广西壮族腾王村", "汉族", "满族"],
-    #                            "标签": ["PER", "Age", "Gender", "RESIDENT", "Race", "Race"],
-    #                            "开始位置": [5, 9, 13, 15, 26, 29],
-    #                            "结束位置": [8, 12, 14, 22, 28, 31]})
+    default_sample = "罪嫌疑人为郭磊昌，19岁，男，广西壮族腾王村十队人，汉族。罗翔，男，湖南耒阳人，北京大学法学院刑法学专业毕业，法学博士。"
 
-    # name = st.text_input("输入文本") or default_sample
-    st.markdown("🍄 **输入文本: **")
+    text = st.text_area("🍄 请输入体验文本:", value = default_sample, key="public_ner_sample_parser")
 
-    #st.write("```" + default_sample + "```")
-    text = st.text_area("请输入文本", default_sample, key="public_ner_sample_parser")
-    
-    if st.button("解析"):
+    if st.button("点击解析"):
         try:
-            parser_res = requests.post(url = URL, data = json.dumps({"q": text})).json()
+            requests.get(url=URL)
+        except:
+            st.error("服务未开启，请联系ASR基础研发部")
+        try:
+            parser_res = requests.post(url = URL + "/parse", data = json.dumps({"q": text})).json()
             st.success("解析完成")
 
             entities = parser_res.get("entities")
 
             st.table(pd.DataFrame({"要素": [x["value"] for x in entities],
-                "标签": [x["entity"] for x in entities],
-                "开始位置": [x["start"] for x in entities],
-                "结束位置": [x["end"] for x in entities]}))
+                                   "标签": [x["entity"] for x in entities],
+                                   "开始位置": [x["start"] for x in entities],
+                                   "结束位置": [x["end"] for x in entities]}))
+
         except:
             st.error("解析失败，请稍后重试")
-            
+
 
     # ===============
     # API 接口文档
     # ===============
+
     st.header("♟ API 接口文档 ♟")
-    if st.checkbox("接口文档"):
+    if st.checkbox("点击查看 接口文档"):
         st.write("服务通过 HTTP/POST 进行服务解析请求\n")
 
         option = st.selectbox("入参/出参", ("入参 JSON", "出参 JSON"))
@@ -112,7 +112,7 @@ def public_ner():
     # 部署文档
     # ===============
     st.header("♟ 部署文档 ♟")
-    if st.checkbox("部署文档"):
+    if st.checkbox("点击查看 部署文档"):
         st.write("服务通过 Docker 进行项目部署\n")
 
         st.header("🔹 目录结构")
@@ -179,7 +179,7 @@ def public_ner():
     # 自定义热词词典
     # ===============
     st.header("♟ 热词词典 ♟")
-    if st.checkbox("热词词典"):
+    if st.checkbox("点击查看 热词词典"):
         st.write("该功能支持某些新词热词进行强制类别输出，或者强制屏蔽，如书记员名字等")
 
         st.markdown("```\n"
