@@ -10,9 +10,9 @@ WORKDIR ${APP_DIR}
 COPY requirements.txt .
 
 RUN true \
-    && pip install -U pip -i https://mirror.baidu.com/pypi/simple \
+    && pip install  --no-cache-dir -U pip -i https://mirror.baidu.com/pypi/simple \
     # pip install packages
-    && pip install -r requirements.txt -i https://mirror.baidu.com/pypi/simple
+    && pip install  --no-cache-dir -r requirements.txt -i https://mirror.baidu.com/pypi/simple
 
 
 # streamlit-specific commands

@@ -20,8 +20,6 @@ def load_page() -> None:
 
 
 def prepare_layout() -> None:
-    """[summary]"""
-
     st.title("📕 金额属性抽取")
 
     # ===============
