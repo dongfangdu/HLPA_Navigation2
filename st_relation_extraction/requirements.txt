@@ -1,4 +1,5 @@
 streamlit
-scipy
-xlrd
+# scipy
+# xlrd
 htbuilder
+httpx

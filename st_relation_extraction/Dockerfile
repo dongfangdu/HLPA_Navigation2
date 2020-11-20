@@ -10,9 +10,9 @@ WORKDIR ${APP_DIR}
 COPY requirements.txt .
 
 RUN true \
-    && pip install -U pip -i https://mirror.baidu.com/pypi/simple \
+    && pip install  --no-cache-dir -U pip -i https://mirror.baidu.com/pypi/simple \
     # pip install packages
-    && pip install -r requirements.txt -i https://mirror.baidu.com/pypi/simple
+    && pip install  --no-cache-dir -r requirements.txt -i https://mirror.baidu.com/pypi/simple
 
 
 # streamlit-specific commands
@@ -34,4 +34,4 @@ EXPOSE 8502
 ADD dirs.tar .
 
 # exectute start up script
-CMD ["streamlit", "run", "src/app.py", "--server.port", "8502", "--server.baseUrlPath", "/relation-extraction", "--server.enableCORS", "false"]
+CMD ["streamlit", "run", "src/main.py", "--server.port", "8502", "--server.baseUrlPath", "/relation-extraction", "--server.enableCORS", "false"]
