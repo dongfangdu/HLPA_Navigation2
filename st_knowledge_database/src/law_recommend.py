@@ -20,16 +20,16 @@ def law_recommend():
     st.header("♟ 样例体验 ♟")
     st.warning("可以简要描述自己的问题")
 
+    try:
+        requests.get(url = URL + "ping")
+    except:
+        st.error("服务未开启，请联系ASR基础研发部")
+
     default_text = "选民资格案件如何起诉?如何审理?"
 
     text = st.text_area("🍄 请输入体验文本:", value = default_text, key="law_recommend_sample")
 
     if st.button("点击解析"):
-        try:
-            requests.get(url = URL + "ping")
-        except:
-            st.error("服务未开启，请联系ASR基础研发部")
-
         try:
             parser_res = requests.post(url = URL + "queryRegex", data = json.dumps({"query": text})).json()
             st.success("解析完成")

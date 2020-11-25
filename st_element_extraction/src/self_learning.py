@@ -97,7 +97,7 @@ def self_learning():
     # API 接口文档
     # ===============
     st.header("♟ API 接口文档 ♟")
-    if st.checkbox("接口文档"):
+    if st.checkbox("点击查看 接口文档"):
         st.write("未完成\n")
 
 

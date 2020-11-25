@@ -20,17 +20,16 @@ def defraud():
     st.header("♟ 样例体验 ♟")
     st.warning("体验环境为测试环境，建议文本长度在100字以内")
 
+    try:
+        requests.get(url = URL + "ping")
+    except:
+        st.error("服务未开启，请联系ASR基础研发部")
+
     default_sample = "在线出售雷管炸药各种炸药配方大全"
 
-    # if st.checkbox("🍄 点击查看文本"):
-    #     st.markdown("```" + default_text + "```")
     text = st.text_area("🍄 请输入体验文本:", value = default_sample, key="defraud_sample")
 
     if st.button("点击解析"):
-        try:
-            requests.get(url = URL + "ping")
-        except:
-            st.error("服务未开启，请联系ASR基础研发部")
 
         try:
             parser_res = requests.post(url = URL + "defraudParse", data = json.dumps({"sentence": text})).json()
@@ -90,7 +89,8 @@ def defraud():
         st.write("该能力支持动态增删敏感词供模型使用")
 
         st.markdown("```\n"
-                    "在指定预料库中添加自定义的 txt 文件")
+                    "在指定预料库中添加自定义的 txt 文件\n"
+                    "```")
 
         st.write("其中 txt 示例格式如下")
         st.markdown("```\n"

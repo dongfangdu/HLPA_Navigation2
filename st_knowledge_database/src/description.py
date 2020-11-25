@@ -7,7 +7,6 @@ def description():
     st.markdown("提供的能力是作为产品支撑能力展示，也支持定制需求")
 
     st.header("♟ 应用场景 ♟")
-
     st.subheader("🔹 客服质检")
     st.markdown("构建 `问题-话术回复` 的知识库，丰富语音质检内容")
 

@@ -36,15 +36,16 @@ def public_ner():
     st.header("♟ 样例体验 ♟")
     st.warning("体验环境为测试环境，建议文本长度在100字以内，解析可能存在延迟")
 
+    try:
+        requests.get(url=URL)
+    except:
+        st.error("服务未开启，请联系ASR基础研发部")
+
     default_sample = "罪嫌疑人为郭磊昌，19岁，男，广西壮族腾王村十队人，汉族。罗翔，男，湖南耒阳人，北京大学法学院刑法学专业毕业，法学博士。"
 
     text = st.text_area("🍄 请输入体验文本:", value = default_sample, key="public_ner_sample_parser")
 
     if st.button("点击解析"):
-        try:
-            requests.get(url=URL)
-        except:
-            st.error("服务未开启，请联系ASR基础研发部")
         try:
             parser_res = requests.post(url = URL + "/parse", data = json.dumps({"q": text})).json()
             st.success("解析完成")
@@ -101,7 +102,7 @@ def public_ner():
                      })
 
             st.write('\n')
-            st.write('仅需要返回结果的 entities 字段')
+            st.markdown('仅需要返回结果的 `entities` 字段')
             st.table(pd.DataFrame({
                 "属性": ["start", "end", "value", "entity", "confidence"],
                 "类型": ["Int", "Int", "String", "String", "Float"],
@@ -180,7 +181,7 @@ def public_ner():
     # ===============
     st.header("♟ 热词词典 ♟")
     if st.checkbox("点击查看 热词词典"):
-        st.write("该功能支持某些新词热词进行强制类别输出，或者强制屏蔽，如书记员名字等")
+        st.markdown("该功能支持某些新词热词进行 `强制类别输出`，或者 `强制屏蔽`，如书记员名字等")
 
         st.markdown("```\n"
                     "cd ./NerModel/default/model_20200710-015956/tokenizer_spacy\n"
