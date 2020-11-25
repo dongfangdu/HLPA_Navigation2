@@ -1,5 +1,12 @@
 import streamlit as st
 import pandas as pd
+import requests
+import os.path as opt
+from PIL import Image
+
+IMAGE = opt.abspath(opt.join(__file__, opt.pardir, "case_query.png"))
+SERVER_URL = "http://192.168.106.170:5005"
+FORE_URL = "http://192.168.106.170:9995"
 
 _default_samples = ["你好我想查下案子", "我的身份证是330501197804那个什么",
                     "是330501197804160037", "大概是去年的2月", "不是", "是的",
@@ -34,52 +41,52 @@ while _default_answer:
     default_answer.append("")
 default_answer.pop(-1)
 
-# @st.cache(allow_output_mutation=True)
-# def Chat():
-#     return []
-#
-# chat=Chat()
-# name = st.sidebar.text_input("Name")
-# message = st.sidebar.text_area("Message")
-# if st.sidebar.button("Post chat message"):
-#     chat.append((name,message))
-#
-# if len(chat) > 10:
-#     del(chat[0])
-#
-# try:
-#     names, messages = zip(*chat)
-#     chat1 = dict(Name = names, Message =  messages)
-#     st.table(chat1)
-# except ValueError:
-#     st.title("Ent")
-
 def case_query():
+    st.title("12368司法服务")
+
     # ===============
     # 概述
     # ===============
     st.header("♟ 概述 ♟")
-    st.markdown(">**12368司法服务热线**")
-    st.markdown(">是便于用户根据自己的案子进行相关案件信息、进度查询的产品")
-    st.markdown(">目前已应用于湖州、杭州下城区等")
+    st.markdown("**12368司法服务热线**，是便于用户根据自己的案子进行相关案件信息、进度查询的产品\n")
+    st.markdown("目前已应用于湖州、杭州下城区等\n")
+
+    # ===============
+    # 流程图
+    # ===============
+    st.header("♟ 流程图 ♟")
+    if st.checkbox("🍄 点击查看流程图"):
+        image_1 = Image.open(IMAGE)
+        st.image(image_1, caption="案件查询流程图", use_column_width = True)
 
     # ===============
     # 样例体验
     # ===============
     st.header("♟ 样例体验 ♟")
-
-    st.markdown(">以下样例展示了 **下城区12368司法服务** 的 **案件查询流程**")
-
     if st.checkbox("🍄 点击查看样例对话"):
-
         chat1 = dict(User = default_samples, Bot = default_answer)
         st.table(chat1)
+
+    # ===============
+    # 交互体验
+    # ===============
+    st.header("♟ 交互体验 ♟")
+    st.warning("体验环境为测试环境，解析可能存在延迟")
+    st.warning("涉及身份证与日期请输入测试案例信息")
+
+    try:
+        requests.get(url = FORE_URL)
+    except:
+        st.error("服务未开启，请联系ASR基础研发部")
+
+    href_url = FORE_URL
+    st.markdown(f"[点击跳转至 **交互页面**]({href_url})")
 
     # ===============
     # API 接口文档
     # ===============
     st.header("♟ API 接口文档 ♟")
-    if st.checkbox("接口文档"):
+    if st.checkbox("点击查看 接口文档"):
         st.write("服务通过 HTTP/POST 进行服务解析请求\n")
 
         option = st.selectbox("入参/出参", ("入参 JSON", "出参 JSON"))
@@ -98,6 +105,7 @@ def case_query():
             }))
 
         elif option == "出参 JSON":
+
             st.json({"text": "请告诉我您的身份证",
                      "recipient_id": "123",
                      "customMessage": {}
@@ -114,7 +122,7 @@ def case_query():
     # 定制需求
     # ===============
     st.header("♟ 定制需求 ♟")
-    if st.checkbox("定制需求"):
+    if st.checkbox("点击查看 定制需求"):
         st.write("该能力持续优化中\n")
         st.write("同时也支持场景定制化")
 

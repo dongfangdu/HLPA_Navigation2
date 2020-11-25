@@ -4,28 +4,29 @@ from PIL import Image
 
 
 def self_learning():
-    st.title("自学习")
+    st.title("要素提取自学习")
 
     # ================
     # 概述
     # ================
     st.header("♟ 概述 ♟")
-    st.write("我们提供了要素提取的自学习能力，方便在不同场景进行专名识别\n")
+    st.markdown("我们提供了要素提取的自学习能力，方便在 `不同场景` 进行 `专名识别` \n")
+    st.write("同时我部门也支持各场景的定制化\n")
+
 
     # ================
     # 能力优势
     # ================
     st.header("♟ 能力优势 ♟")
-    st.write("针对中文的传统要素提取模型存在一定的不足，主要包括以下几点")
-    st.markdown("* 对个性化专名支持度低，训练需要收集有效且大量标注数据")
-    st.markdown("* 需要专业人士进行模型设计到实现的全程参与，参与门槛较高")
-    st.markdown("* 基于神经网络下的时间复杂度高导致应用的实时性不令人满意")
-    st.markdown("* 整套预测系统对非预期结果的可控性低，难以实时调整")
-    st.markdown("* 模型的泛化性和鲁棒性难以保证")
+    st.markdown("针对中文的 `传统要素提取模型` 存在一定的不足，主要包括以下几点")
+    st.markdown("* 个性化专名支持度低，需大量标注数据")
+    st.markdown("* 需专业人士参与，门槛较高")
+    st.markdown("* 应用实时性较低，非预期结果的可控性低")
+    st.markdown("* 模型的泛化性难以保证")
 
     st.write("\n")
     st.write("___")
-    st.write("我们的要素提取能力具备灵活的自学习能力，主要具备以下优势")
+    st.markdown("我司的要素提取能力具备灵活的自学习能力，主要具备以下优势")
     st.markdown("* 提供数据简单")
     st.markdown("* 多模型自我调整训练择优")
     st.markdown("* 在线模型学习、验证和上线")
@@ -39,16 +40,17 @@ def self_learning():
     st.subheader("🍄 主要流程")
     st.markdown("```用户上传训练数据，并启动自学习服务，能力将输出模型并可进行验证和使用```")
     image_1 = Image.open("./img/self_learning_main.png")
-    st.image(image_1, caption="自学习主要流程")
+    st.image(image_1, caption="自学习主要流程", width = 200)
 
     st.subheader("🍄 自学习架构")
     st.markdown("```自学习框架各子能力均可进行自由配置，但我们简易使用默认配置```")
     image_2 = Image.open("./img/self_learning.png")
-    st.image(image_2, caption="自学习架构")
+    st.image(image_2, caption="自学习架构", width = 700)
 
     # ===============
     # 数据提供
     # ===============
+    st.subheader("🍄 数据提供")
     st.markdown("对于需要进行要素提取自学习的客户，我们建议其提供的数据包括")
     st.markdown("* 定义的要素类别")
     st.markdown("* 各类别下的典型词词典")
@@ -58,6 +60,7 @@ def self_learning():
     # 样例体验
     # ===============
     st.header("♟ 样例体验 ♟")
+    st.warning("体验环境仅支持样例解析，暂不开放自定义输入，请上传训练文本再进行模型验证")
 
     default_samples = pd.DataFrame(
         [
@@ -77,15 +80,16 @@ def self_learning():
         {"要素": ["火龙果"], "标签": ["fruit"], "开始位置": [0], "结束位置": [3]}
     )
 
-    if st.checkbox("🍄 上传文本"):
+    if st.checkbox("点击查看上传文本"):
         st.table(default_samples)
 
-    if st.button("上传"):
+    if st.button("🍄 点击上传训练文本"):
         st.success("上传成功")
         st.success("训练完成")
 
-    if st.button("🍄 验证文本"):
+    if st.button("🍄 点击验证模型"):
         st.success("解析完成")
+        st.markdown("验证文本: ")
         st.markdown("```" + default_query + "```")
         st.table(default_res)
 
@@ -93,7 +97,7 @@ def self_learning():
     # API 接口文档
     # ===============
     st.header("♟ API 接口文档 ♟")
-    if st.checkbox("接口文档"):
+    if st.checkbox("点击查看 接口文档"):
         st.write("未完成\n")
 
 
