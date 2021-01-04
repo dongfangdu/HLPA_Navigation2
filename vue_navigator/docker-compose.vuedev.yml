@@ -1,9 +1,0 @@
-version: '3'
-services:
-  vue_dev:
-    image: hawk/vue-dev:v1
-    container_name: vue_dev
-    volumes: 
-     - ../vue_navigator:/workspace
-    stdin_open: true
-    tty: true
