@@ -42,8 +42,10 @@ def prepare_layout() -> None:
     st.markdown("")
     st.markdown("")
 
+    text_exam = """2013年6月4日，廖细妹丈夫刘德发，父母廖儒兴、胡秀芳，女儿刘芸珊、刘思燕以奇石卫生院对死者产后应急预案不到位，应急处置不当，应承担医疗损害责任为由诉至法院，要求奇石卫生院赔偿其丧葬费12000元、死亡赔偿金240000元、两名未成年人抚养费248000元、精神损害抚慰金50000元、被赡养人生活补助金50000元。"""
+
     st.markdown("🍄 **体验: **")
-    text_input = st.text_area("请输入文本", text_default, key=f"money_attr_text")
+    text_input = st.text_area("请输入文本", text_exam, key=f"money_attr_text")
 
     if st.button("分析"):
         try:
