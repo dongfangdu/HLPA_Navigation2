@@ -70,7 +70,9 @@ def parag_classify():
         st.table(do_text_clsf(text_input))
 
 
-def do_text_clsf(text):
+def do_text_clsf(text_input):
+
+    text = str(text_input)
 
     url = "http://192.168.100.210:5650/sents_cls"
 
