@@ -98,22 +98,22 @@ services:
     # volumes:
     #   - ./st_relation_extraction/src:/app/src
 
-  vue_navigator:
-    image: yunjia/vue_navigator:latest
-    build:
-      context: ./vue_navigator
-    container_name: vue_navigator
-    ports:
-      - "9600:80"
-    # volumes:
-    #   - ./vue_navigator/dist:/usr/share/nginx/html
-    #   - ./vue_navigator/nginx.conf:/etc/nginx/conf.d/default.conf
-    # links:
-    #   - st_relation_extraction
-    networks:
-      - base_api_network_0001
-    # environment:
-    #   - VUE_APP_OTHER_IP=123456789
+# vue_navigator:
+#   image: yunjia/vue_navigator:latest
+#   build:
+#     context: ./vue_navigator
+#   container_name: vue_navigator
+#   ports:
+#     - "9600:80"
+#   # volumes:
+#   #   - ./vue_navigator/dist:/usr/share/nginx/html
+#   #   - ./vue_navigator/nginx.conf:/etc/nginx/conf.d/default.conf
+#   # links:
+#   #   - st_relation_extraction
+#   networks:
+#     - base_api_network_0001
+#   # environment:
+#   #   - VUE_APP_OTHER_IP=123456789
 
 networks:
   base_api_network_0001:
