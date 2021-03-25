@@ -4,6 +4,7 @@ import streamlit as st
 
 from parag_classify import parag_classify
 from senti_classify import senti_classify
+from yunpan_classify import yunpan_classify
 
 
 def homepage():
@@ -21,16 +22,21 @@ def homepage():
     st.subheader("🔹 情感分类")
     st.markdown("针对用户评论等信息，评估用户对某商品或某事件的好恶倾向。")
 
+    st.subheader("🔹 云盘预警")
+    st.markdown("针对云盘产品，实时检测内容是否涉密预警")
 
 def create_layout():
     st.sidebar.title("菜单")
-    app_mode = st.sidebar.radio("请选择其中一个功能", ["简介", "裁判文书段落分类", "情感分类"])
+    app_mode = st.sidebar.radio("请选择其中一个功能", ["简介", "裁判文书段落分类", "情感分类", "云盘预警"])
     if app_mode == "简介":
         homepage()
     elif app_mode == "裁判文书段落分类":
         parag_classify()
     elif app_mode == "情感分类":
         senti_classify()
+    elif app_mode == "云盘预警":
+        yunpan_classify()
+        
     # elif app_mode == "接口文档":
     #     st.write("接口文档待写")
 
