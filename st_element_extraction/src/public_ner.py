@@ -19,11 +19,15 @@ def public_ner():
     # 字段
     # ===============
     st.header("♟ 要素字段 ♟")
-    entity_df = pd.DataFrame({"字段": ["Date", "PER", "ORG", "RESIDENT", "Money", "IDNumber", "MobilePhone", "BankCard",
-                                     "CarNumber", "CaseNum", "Age", "Gender", "Race", "Origin",
-                                     "Role", "Court", "TITLE", "EDU"],
-                              "要素": ["时间", "人名", "组织机构名", "地名", "金额", "身份证号", "手机号", "银行卡号", "车牌号",
-                                     "案件号", "年龄", "性别", "民族", "籍贯", "诉讼地位", "法院", "职业", "教育水平"],
+    schema_eng = ["Date", "PER", "ORG", "RESIDENT", "Money", "IDNumber", "MobilePhone", "BankCard",
+                  "CarNumber", "CaseNum", "Age", "Gender", "Race", "Origin",
+                  "Role", "Court", "TITLE", "EDU"]
+    schema_zh = ["时间", "人名", "组织机构名", "地名", "金额", "身份证号", "手机号", "银行卡号", "车牌号",
+                 "案件号", "年龄", "性别", "民族", "籍贯", "诉讼地位", "法院", "职业", "教育水平"]
+
+    schema_dict = dict(zip(schema_eng, schema_zh))
+    entity_df = pd.DataFrame({"字段": schema_eng,
+                              "要素": schema_zh,
                               "样例": ["2020年1月", "小王", "社保局", "杭州市", "10元", "520520520520520520", "13600000000",
                                      "浙a12345", "6216610200016587010", "2020浙民事001号", "18岁", "男", "汉族",
                                      "浙江省杭州市余杭区", "原告", "浙江高院", "教师", "本科"]})
@@ -53,7 +57,8 @@ def public_ner():
             entities = parser_res.get("entities")
 
             st.table(pd.DataFrame({"要素": [x["value"] for x in entities],
-                                   "标签": [x["entity"] for x in entities],
+                                   "标签字段": [x["entity"] for x in entities],
+                                   "标签含义": [schema_dict[x["entity"]] for x in entities],
                                    "开始位置": [x["start"] for x in entities],
                                    "结束位置": [x["end"] for x in entities]}))
 
